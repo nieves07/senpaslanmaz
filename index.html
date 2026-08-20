@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Şen Paslanmaz — Mega Yat Paslanmaz Donanım & Dekorasyon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--charcoal:#1c1e22;--charcoal-2:#41444b;--steel-light:#c7cdd4;--steel-mid:#8b929c;--white:#f7f8f9;--accent-shine:linear-gradient(110deg,#8b929c 20%,#f2f4f6 45%,#c7cdd4 55%,#8b929c 80%);--maxw:1180px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Inter,sans-serif;background:var(--white);color:var(--charcoal);overflow-x:hidden}
+body.modal-open,body.intro-active{overflow:hidden}
+h1,h2,h3,h4,h5{font-family:Oswald,sans-serif;text-transform:uppercase;letter-spacing:.03em}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:var(--maxw);margin:auto;padding:0 28px}
+section{padding:110px 0}
+.intro-screen{position:fixed;inset:0;z-index:500;background:linear-gradient(145deg,#0f1012,#292c31);display:flex;align-items:center;justify-content:center;opacity:1;visibility:visible;transition:opacity .8s ease,visibility .8s ease}
+.intro-screen.hide{opacity:0;visibility:hidden;pointer-events:none}
+.intro-screen:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,#fff1 0 2px,transparent 2px 40px);opacity:.35}
+.intro-logo{position:relative;width:min(280px,65vw);height:auto;filter:brightness(0) invert(1);opacity:0;transform:scale(.72) translateY(20px);animation:introLogo 1.2s cubic-bezier(.2,.8,.2,1) .15s forwards}
+.intro-line{position:absolute;width:0;height:1px;background:var(--steel-light);bottom:calc(50% - 92px);animation:introLine 1s ease 1s forwards}
+header{position:fixed;inset:0 0 auto;z-index:100;padding:22px 0;background:rgba(28,30,34,0);transition:.4s}
+header.scrolled{background:rgba(28,30,34,.96);box-shadow:0 6px 24px #0004;padding:12px 0}
+header .wrap{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px}.logo img{height:34px;width:auto;filter:brightness(0) invert(1)}
+nav ul{display:flex;gap:34px;list-style:none}nav a{color:#e7e9eb;font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.menu-toggle{display:none;flex-direction:column;gap:5px;background:none;border:0}.menu-toggle span{width:24px;height:2px;background:#fff}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(15,16,18,.94) 0%,rgba(20,22,26,.78) 48%,rgba(20,22,26,.58) 100%),url('https://i.hizliresim.com/yi4e7n06.jpg') center/cover no-repeat}
+.hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,#fff1 0 2px,transparent 2px 40px);opacity:.25}
+.steel-ring{display:none}
+.hero-content{position:relative;z-index:2;max-width:640px;padding:120px 0 80px}
+.eyebrow{color:var(--steel-light);font-size:13px;letter-spacing:.25em;text-transform:uppercase;margin-bottom:18px}
+.hero .eyebrow,.hero h1,.hero p,.btn-row{opacity:0;animation:fadeUp .8s ease forwards}
+.hero .eyebrow{animation-delay:.2s}.hero h1{font-size:clamp(38px,6vw,64px);line-height:1.05;color:#fff;margin-bottom:22px;animation-delay:.4s}
+.hero h1 em{font-style:normal;background:var(--accent-shine);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4s linear infinite}
+.hero p{color:#c3c7cc;line-height:1.75;max-width:520px;margin-bottom:34px;animation-delay:.6s}
+.btn-row{display:flex;gap:16px;flex-wrap:wrap;animation-delay:.8s}
+.btn{display:inline-block;padding:15px 30px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;border:1px solid transparent;transition:.3s}
+.btn-solid{background:var(--steel-light);color:var(--charcoal)}.btn-solid:hover{background:#fff;transform:translateY(-2px)}
+.btn-outline{border-color:#ffffff59;color:#fff}.btn-outline:hover{border-color:#fff;background:#ffffff14}
+.scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);color:#9aa0a8;font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-align:center}
+.scroll-cue:after{content:"";display:block;width:1px;height:36px;margin:8px auto;background:linear-gradient(#8b929c,transparent)}
+.section-head{max-width:640px;margin-bottom:60px}.section-head .eyebrow{color:var(--steel-mid);margin:0}.section-head h2{font-size:clamp(28px,4vw,42px);margin-top:10px}
+.reveal{opacity:0;transform:translateY(30px);transition:.7s}.reveal.in{opacity:1;transform:translateY(0)}
+.stats{background:var(--charcoal);color:#fff;padding:70px 0}.stats .wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;text-align:center}
+.stat h3{font-size:clamp(30px,4vw,46px);color:var(--steel-light)}.stat p{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#9aa0a8;margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#e3e5e8;border:1px solid #e3e5e8}
+.card{background:#fff;padding:26px;min-height:260px;position:relative;overflow:hidden;transition:.35s}.card:before{content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;background:var(--accent-shine);transform:scaleX(0);transform-origin:left;transition:.4s}
+.card:hover{background:#fafbfc}.card:hover:before{transform:scaleX(1)}
+.card-icon{width:100%;height:145px;margin-bottom:22px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f5f6f7,#fff);overflow:hidden;cursor:pointer}
+.card-icon img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .4s}.card:hover .card-icon img{transform:scale(1.06)}
+.card h4{font-size:15px;font-weight:500}.card p{font-size:13px;color:#8b929c;margin-top:8px;line-height:1.5}
+.services{position:relative;background:linear-gradient(135deg,#e8ebee 0%,#f8f9fa 52%,#e1e4e8 100%);border-block:1px solid #d8dce0;overflow:hidden}
+.services:before{content:"HİZMET";position:absolute;right:-35px;top:35px;font-family:Oswald,sans-serif;font-size:clamp(90px,15vw,190px);font-weight:700;color:#1c1e2208;line-height:1;pointer-events:none}
+.services .wrap{display:block}.services .section-head{position:relative;z-index:1;margin-bottom:42px}.services .section-head h2{max-width:620px}
+.service-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.service-item{min-height:290px;padding:28px 22px;background-color:rgba(28,30,34,.82);background-position:center;background-size:cover;background-repeat:no-repeat;color:#fff;border:1px solid #ffffff55;box-shadow:0 10px 25px #1c1e2240;position:relative;overflow:hidden;transition:.35s}
+.service-item:before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(15,16,18,.42),rgba(15,16,18,.88));z-index:0;transition:.35s}
+.service-item:after{content:"";position:absolute;right:-28px;bottom:-38px;width:100px;height:100px;border:1px solid #c7cdd455;border-radius:50%;transition:.4s;z-index:1}
+.service-item:hover{transform:translateY(-8px);box-shadow:0 18px 32px #1c1e2260}.service-item:hover:before{background:linear-gradient(160deg,rgba(15,16,18,.2),rgba(15,16,18,.78))}.service-item:hover:after{width:145px;height:145px;border-color:#c7cdd4aa}
+.service-item>*{position:relative;z-index:2}.service-item .num{font-family:Oswald;font-size:13px;color:var(--steel-light);letter-spacing:.15em;margin-bottom:25px}
+.service-icon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid #c7cdd488;color:#fff;font-family:Oswald;font-size:22px;margin-bottom:22px;transition:.35s}
+.service-item:hover .service-icon{border-color:#fff;color:#fff;transform:rotate(8deg)}.service-item h4{font-size:16px;margin-bottom:12px}.service-item p{font-size:12px;line-height:1.6;color:#e1e4e8;max-width:180px}
+.service-tig{background-image:url('https://pars-makina.com.tr/wp-content/uploads/2023/12/261456661fb4-2048x1152.jpg')}.service-polisaj{background-image:url('https://polisajbodrum.com.tr/wp-content/uploads/polisaj.jpg')}.service-torna{background-image:url('https://www.senpaslanmaz.com/wp-content/uploads/2021/09/torna-1536x864.jpg')}.service-freze{background-image:url('https://www.senpaslanmaz.com/wp-content/uploads/2021/09/freze-1536x864.jpg')}.service-boru{background-image:url('https://www.senpaslanmaz.com/wp-content/uploads/2021/09/boru-kivirma-4.jpeg')}
+.references{background:#f1f2f4;border-block:1px solid #e3e5e8}.references .section-head{margin-bottom:42px}.reference-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.reference-item{height:150px;background:#fff;overflow:hidden;cursor:pointer;position:relative}.reference-item img{width:100%;height:100%;object-fit:cover;display:block;transition:.4s}.reference-item:hover img{transform:scale(1.08);filter:brightness(.85)}
+
+.about{position:relative;overflow:hidden;background:linear-gradient(135deg,#eef0f2,#fff 55%,#e3e6e9);border-top:1px solid #dce0e4}
+.about:before{content:"2007";position:absolute;right:-20px;top:20px;font-family:Oswald,sans-serif;font-size:clamp(150px,25vw,330px);font-weight:700;line-height:1;color:#1c1e2208;pointer-events:none}
+.about .wrap{position:relative;z-index:1}
+.about-layout{display:grid;grid-template-columns:minmax(300px,.9fr) minmax(420px,1.1fr);gap:75px;align-items:center}
+.about-visual{min-height:480px;position:relative;background:linear-gradient(145deg,rgba(15,16,18,.1),rgba(15,16,18,.7)),url('https://i.hizliresim.com/iibqgenj.jpg') center/cover no-repeat;box-shadow:18px 18px 0 #c7cdd4;overflow:hidden}
+.about-visual:after{content:"ŞEN PASLANMAZ";position:absolute;left:25px;bottom:22px;color:#fff;font:500 14px Oswald,sans-serif;letter-spacing:.2em}
+.about-year{position:absolute;right:22px;top:20px;color:#fff;font:600 52px Oswald,sans-serif;line-height:1}
+.about-copy{max-width:600px}.about-copy .eyebrow{color:#707780}.about-copy h2{font-size:clamp(28px,3.6vw,42px);line-height:1.1;margin:10px 0 22px}.about-copy p{color:#5a5e64;line-height:1.8;margin-bottom:16px;font-size:15px}
+.about-features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:30px 0}.about-feature{background:#fff;border:1px solid #dfe2e5;padding:18px 14px;box-shadow:0 8px 18px #1c1e2210}.about-feature strong{display:block;font:600 24px Oswald,sans-serif;color:#41444b}.about-feature span{display:block;color:#7d838b;font-size:11px;line-height:1.4;margin-top:6px;text-transform:uppercase;letter-spacing:.04em}
+.about-copy .btn{border-color:#41444b;color:#41444b}.about-copy .btn:hover{background:#41444b;color:#fff}
+
+.cta{background:linear-gradient(120deg,#14161a,#2a2d32);color:#fff;text-align:center}.cta h2{font-size:clamp(26px,4vw,40px);margin-bottom:20px}.cta p{color:#a9adb3;max-width:520px;margin:0 auto 34px;line-height:1.7}
+footer{background:var(--charcoal);color:#c3c7cc;padding:70px 0 26px}.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
+footer h5{color:#fff;font-size:13px;letter-spacing:.1em;margin-bottom:18px}footer ul{list-style:none}footer li{margin-bottom:10px;font-size:13px}footer p.small{font-size:13px;line-height:1.7;color:#9aa0a8}
+.foot-bottom{border-top:1px solid #ffffff14;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:#7c828a}
+.gallery-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(10,11,13,.94)}.gallery-modal.open{display:flex}
+.gallery-box{width:min(100%,1000px);max-height:94vh;background:#fff;padding:22px;position:relative;overflow:auto}.gallery-close{position:absolute;right:14px;top:10px;border:0;background:none;color:#222;font-size:32px;line-height:1;cursor:pointer;z-index:2}
+.gallery-title{font-family:Oswald;text-transform:uppercase;font-size:22px;margin:0 42px 18px 0}.gallery-main{height:min(58vh,560px);display:flex;align-items:center;justify-content:center;background:#f2f3f4}.gallery-main img{width:100%;height:100%;object-fit:contain}
+.gallery-thumbs{display:flex;gap:10px;overflow-x:auto;padding-top:14px}.gallery-thumbs button{flex:0 0 90px;height:68px;padding:0;border:2px solid transparent;background:#f1f2f3;cursor:pointer}.gallery-thumbs button.active{border-color:var(--charcoal)}.gallery-thumbs img{width:100%;height:100%;object-fit:cover}
+@keyframes shine{to{background-position:-200% center}}@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes introLogo{to{opacity:1;transform:scale(1) translateY(0)}}@keyframes introLine{to{width:180px}}
+@media(max-width:1000px){.service-grid{grid-template-columns:repeat(3,1fr)}.about-layout{gap:45px}}
+@media(max-width:900px){nav{display:none}.menu-toggle{display:flex}.stats .wrap{grid-template-columns:repeat(2,1fr);gap:36px}.grid{grid-template-columns:repeat(2,1fr)}.reference-grid{grid-template-columns:repeat(3,1fr)}.about-layout{grid-template-columns:1fr}.about-visual{min-height:380px;max-width:620px}.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.service-grid{grid-template-columns:repeat(2,1fr)}.about-features{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.reference-grid{grid-template-columns:repeat(2,1fr)}.reference-item{height:125px}.foot-grid{grid-template-columns:1fr}.gallery-modal{padding:10px}.gallery-box{padding:14px}.service-item{min-height:250px;padding:22px 17px}.service-item h4{font-size:14px}.about-visual{min-height:300px;box-shadow:10px 10px 0 #c7cdd4}.about-features{grid-template-columns:1fr}.about-copy h2{font-size:30px}}
+</style>
+</head>
+<body class="intro-active">
+
+<div class="intro-screen" id="introScreen" aria-label="Şen Paslanmaz açılış ekranı">
+<img class="intro-logo" src="https://www.senpaslanmaz.com/wp-content/uploads/2023/04/logo-beyaz.png" alt="Şen Paslanmaz">
+<div class="intro-line"></div>
+</div>
+
+<header id="siteHeader"><div class="wrap">
+<a class="logo" href="#"><img src="https://www.senpaslanmaz.com/wp-content/uploads/2023/04/logo-beyaz.png" alt="Şen Paslanmaz"></a>
+<nav><ul><li><a href="#anasayfa">Anasayfa</a></li><li><a href="#urunler">Ürünler</a></li><li><a href="#hizmetler">Hizmetlerimiz</a></li><li><a href="#referanslar">Referanslar</a></li><li><a href="#hakkimizda">Kurumsal</a></li><li><a href="#iletisim">İletişim</a></li></ul></nav>
+<button class="menu-toggle" aria-label="Menü"><span></span><span></span><span></span></button>
+</div></header>
+
+<section class="hero" id="anasayfa">
+<div class="wrap"><div class="hero-content"><div class="eyebrow">2007'den beri · Antalya</div><h1>Mega yatlar için <em>paslanmaz</em> donanım ve dekorasyon</h1><p>İç ve dış mekân paslanmaz donanım imalatında uzmanlaşmış dinamik kadromuzla, en küçük parçadan en büyük projeye kadar her ölçekte üretim yapıyoruz.</p><div class="btn-row"><a class="btn btn-solid" href="#urunler">Ürünlerimizi İncele</a><a class="btn btn-outline" href="#hakkimizda">Hakkımızda</a></div></div></div><div class="scroll-cue"></div>
+</section>
+
+<div class="stats"><div class="wrap"><div class="stat"><h3 data-count="2007" data-format="year">0</h3><p>Kuruluş</p></div><div class="stat"><h3 data-count="569">0</h3><p>Tamamlanan Proje</p></div><div class="stat"><h3 data-count="2">0</h3><p>Atölye</p></div><div class="stat"><h3 data-count="16">0</h3><p>Çalışan Personel</p></div><div class="stat"><h3 data-count="126">0</h3><p>Ürün Çeşidi</p></div></div></div>
+
+<section id="urunler"><div class="wrap"><div class="section-head reveal"><div class="eyebrow">Ürünlerimiz</div><h2>Tekne ve yat donanımı ürün ailesi</h2></div></div><div class="wrap" style="padding:0"><div class="grid">
+<div class="card reveal" data-product="baba"><div class="card-icon"><img alt="Baba"></div><h4>Baba</h4><p>Bağlama ve yönlendirme babaları</p></div>
+<div class="card reveal" data-product="capa"><div class="card-icon"><img alt="Çapa & Çapa Cebi"></div><h4>Çapa & Çapa Cebi</h4><p>Özel üretim çapa yuvaları</p></div>
+<div class="card reveal" data-product="fener"><div class="card-icon"><img alt="Fener & Bayrak Direği"></div><h4>Fener & Bayrak Direği</h4><p>Seyir feneri ve direk sistemleri</p></div>
+<div class="card reveal" data-product="halat"><div class="card-icon"><img alt="Halat Loçası"></div><h4>Halat Loçası</h4><p>Aşınmaya dayanıklı halat geçitleri</p></div>
+<div class="card reveal" data-product="irgat"><div class="card-icon"><img alt="Irgat Tavası & Zincir Yolu"></div><h4>Irgat Tavası & Zincir Yolu</h4><p>Zincir yönlendirme sistemleri</p></div>
+<div class="card reveal" data-product="masa"><div class="card-icon"><img alt="Masa & Koltuk Ayağı"></div><h4>Masa & Koltuk Ayağı</h4><p>Güverte mobilyaları için ayak sistemleri</p></div>
+<div class="card reveal" data-product="merdiven"><div class="card-icon"><img alt="Korkuluk & Tutamak"></div><h4>Korkuluk & Tutamak</h4><p>İç ve dış mekân merdiven imalatı</p></div>
+<div class="card reveal" data-product="korkuluk"><div class="card-icon"><img alt="Diğer"></div><h4>Diğer Ürünler</h4><p>Ve daha</p></div>
+</div></div></section>
+
+<section class="services" id="hizmetler">
+<div class="wrap">
+<div class="section-head reveal"><div class="eyebrow">Hizmetlerimiz</div><h2>Paslanmaz üretimde uzman işçilik</h2></div>
+<div class="service-grid">
+<div class="service-item service-tig reveal"><div class="num">01 / 05</div><div class="service-icon">✦</div><h4>TİG Kaynak</h4><p>Temiz, sağlam ve yüksek hassasiyetli kaynak uygulamaları.</p></div>
+<div class="service-item service-polisaj reveal"><div class="num">02 / 05</div><div class="service-icon">◈</div><h4>Polisaj</h4><p>Paslanmaz yüzeylerde estetik ve kusursuz parlaklık.</p></div>
+<div class="service-item service-torna reveal"><div class="num">03 / 05</div><div class="service-icon">◌</div><h4>Torna</h4><p>Özel ölçülerde hassas parça ve bağlantı elemanı üretimi.</p></div>
+<div class="service-item service-freze reveal"><div class="num">04 / 05</div><div class="service-icon">⌘</div><h4>Freze</h4><p>Karmaşık tasarımlar için kontrollü ve detaylı işleme.</p></div>
+<div class="service-item service-boru reveal"><div class="num">05 / 05</div><div class="service-icon">⌒</div><h4>Boru Kıvırma</h4><p>Projenize uygun ölçü ve açılarda kusursuz form verme.</p></div>
+</div>
+</div>
+</section>
+
+<section class="references" id="referanslar"><div class="wrap">
+<div class="section-head reveal"><div class="eyebrow">Referanslarımız</div><h2>Birlikte değer kattığımız projeler</h2></div>
+<div class="reference-grid" id="referenceGrid"></div>
+</div></section>
+
+<section class="about" id="hakkimizda">
+<div class="wrap">
+<div class="about-layout">
+<div class="about-visual reveal"><span class="about-year">2007</span></div>
+<div class="about-copy reveal">
+<div class="eyebrow">Kurumsal</div>
+<h2>Yılların verdiği tecrübe, ustalıkla buluşuyor</h2>
+<p>2007'den bu yana mega yat üreticileriyle çalışan ekibimiz, uluslararası projelerde kullanılan iç ve dış mekân paslanmaz donanım ve dekorasyon ürünlerini yüksek kalite standartlarıyla üretiyor.</p>
+<p>Her projede estetik, dayanıklılık ve hassas ölçüleri bir araya getirerek müşterilerimizin ihtiyaçlarına özel çözümler geliştiriyoruz.</p>
+<div class="about-features">
+<div class="about-feature"><strong>18</strong><span>Yıllık deneyim</span></div>
+<div class="about-feature"><strong>569</strong><span>Tamamlanan proje</span></div>
+<div class="about-feature"><strong>%100</strong><span>Özel üretim</span></div>
+</div>
+<a class="btn" href="https://www.instagram.com/sen.paslanmaz/">Bize Ulaşın</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="cta"><div class="wrap"><h2 class="reveal">Projeniz için doğru donanımı birlikte tasarlayalım</h2><p class="reveal">Küçük bir imalattan büyük ölçekli yat projelerine, ihtiyacınıza özel paslanmaz çözümler sunuyoruz.</p><a class="btn btn-solid reveal" href="https://www.instagram.com/sen.paslanmaz/">Teklif Alın</a></div></section>
+
+<footer id="iletisim"><div class="wrap"><div class="foot-grid"><div><a class="logo" href="#"><img src="https://www.senpaslanmaz.com/wp-content/uploads/2023/04/logo-beyaz.png" alt="Şen Paslanmaz"></a><p class="small">2007 Yılında kurulan ŞEN PASLANMAZ mega yatların iç ve dış mekân paslanmaz donanım ve dekorasyon imalatlarında uzmanlaşmış profesyonel ve dinamik kadrosu ile en küçük imalattan en büyük projelere kadar her türlü paslanmaz donanım ve dekorasyon ihtiyacını karşılamaktadır.</p></div><div><h5>İletişim</h5><ul><li>Zümrüt Mah. Uluönder Atatürk Cad. No:200<br>Çakırlar, Konyaaltı / Antalya</li><li><a href="tel:+902422215222">+90 (242) 221 52 22</a></li><li><a href="mailto:info@senpaslanmaz.com">info@senpaslanmaz.com</a></li></ul></div><div><h5>Hızlı Menü</h5><ul><li><a href="#anasayfa">Anasayfa</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="#hizmetler">Hizmetlerimiz</a></li><li><a href="#referanslar">Referanslar</a></li></ul></div><div><h5>Ürünler</h5><ul><li><a href="#urunler">Baba</a></li><li><a href="#urunler">Çapa & Çapa Cebi</a></li><li><a href="#urunler">Halat Loçası</a></li><li><a href="#urunler">Merdiven</a></li></ul></div></div><div class="foot-bottom"><span>© Şen Paslanmaz — Tüm Hakları Saklıdır.</span><span>Created by cesurdrnn/NieVes</span></div></div></footer>
+
+<div class="gallery-modal" id="galleryModal" role="dialog" aria-modal="true"><div class="gallery-box"><button class="gallery-close" id="galleryClose" aria-label="Galeriyi kapat">&times;</button><h3 class="gallery-title" id="galleryTitle"></h3><div class="gallery-main"><img id="galleryMain" alt=""></div><div class="gallery-thumbs" id="galleryThumbs"></div></div></div>
+
+<script>
+const introScreen=document.getElementById('introScreen');
+window.addEventListener('load',()=>setTimeout(()=>{introScreen.classList.add('hide');document.body.classList.remove('intro-active')},1200));
+
+const header=document.getElementById('siteHeader');
+window.addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>40));
+
+const revealEls=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+revealEls.forEach(e=>io.observe(e));
+
+const stats=document.querySelectorAll('.stat h3');
+const statIO=new IntersectionObserver(entries=>entries.forEach(e=>{
+if(!e.isIntersecting)return;
+const el=e.target,target=+el.dataset.count,isYear=el.dataset.format==='year';
+let value=isYear?target-40:0;const step=Math.max(1,Math.ceil(target/60));
+const tick=()=>{value+=isYear?1:step;el.textContent=Math.min(value,target);if(value<target)requestAnimationFrame(tick)};tick();statIO.unobserve(el);
+}),{threshold:.5});
+stats.forEach(e=>statIO.observe(e));
+
+const base='https://www.senpaslanmaz.com/wp-content/uploads/2021/09/';
+const productImages={
+baba:['paslanmaz-baba-25-min-scaled.jpg','paslanmaz-baba-24-min.jpg','paslanmaz-baba-23-min.jpg','paslanmaz-baba-7.jpg','paslanmaz-baba-15.jpg','paslanmaz-baba-18.jpg'],
+capa:['capa-capa-cebi-1536x864.jpg','capa-capa-cebi-15.jpg','capa-capa-cebi-11.jpg','capa-capa-cebi-9.jpg','capa-capa-cebi-1.jpg','capa-capa-cebi-22-min.png'],
+fener:['fener-bayrak-diregi-1536x864.jpg','fener-bayrak-diregi-3.jpg','fener-bayrak-diregi-5.jpg','fener-bayrak-diregi-7.jpg'],
+halat:['halat-locasi-1536x864.jpg','halat-locasi-1.jpg','halat-locasi-2.jpg','halat-locasi-5.jpg','halat-locasi-7.jpg','halat-locasi-8.jpg','halat-locasi-13.jpg','halat-locasi-22-min.jpg','halat-locasi-25-min-scaled.jpg','halat-locasi-27-min-scaled.jpg'],
+irgat:['irgat-tavasi-zincir-yolu-1536x864.jpg','irgat-tavasi-zincir-yolu-3-min.jpg','irgat-tavasi-zincir-yolu-2-min.jpg','irgat-tavasi-zincir-yolu-1-min-scaled.jpg','capa-capa-cebi-10.jpg'],
+masa:['masa-koltuk-ayagi-24.jpg','masa-koltuk-ayagi-3.jpg','masa-koltuk-ayagi-5.jpg','masa-koltuk-ayagi-7.jpg','masa-koltuk-ayagi-9.jpg','masa-koltuk-ayagi-16.jpg','masa-koltuk-ayagi-18.jpg','masa-koltuk-ayagi-25.jpg'],
+merdiven:['merdiven-korkuluk-tutamak-1536x864.jpg','merdiven-korkuluk-tutamak-18.jpg','merdiven-korkuluk-tutamak-2.jpg','merdiven-korkuluk-tutamak-12.jpg','merdiven-korkuluk-tutamak-13.jpg','merdiven-korkuluk-tutamak-19-scaled.jpg','merdiven-korkuluk-tutamak-20-scaled.jpg'],
+korkuluk:['diger-imalatlarimiz-8-scaled.jpg','merdiven-korkuluk-tutamak-18.jpg','merdiven-korkuluk-tutamak-2.jpg','merdiven-korkuluk-tutamak-12.jpg','merdiven-korkuluk-tutamak-13.jpg','merdiven-korkuluk-tutamak-19-scaled.jpg','merdiven-korkuluk-tutamak-20-scaled.jpg']
+};
+Object.keys(productImages).forEach(k=>productImages[k]=productImages[k].map(x=>base+x));
+
+const modal=document.getElementById('galleryModal'),main=document.getElementById('galleryMain'),title=document.getElementById('galleryTitle'),thumbs=document.getElementById('galleryThumbs');
+function openGallery(name,images){
+title.textContent=name;main.src=images[0];main.alt=name;thumbs.innerHTML='';
+images.forEach((src,i)=>{
+const b=document.createElement('button'),im=document.createElement('img');b.type='button';b.className=i?'':'active';im.src=src;im.alt=`${name} ${i+1}`;b.appendChild(im);
+b.onclick=()=>{main.src=src;thumbs.querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active')};thumbs.appendChild(b);
+});
+modal.classList.add('open');document.body.classList.add('modal-open');
+}
+document.querySelectorAll('.card[data-product]').forEach(card=>{
+const images=productImages[card.dataset.product],image=card.querySelector('img');image.src=images[0];image.loading='lazy';
+card.querySelector('.card-icon').onclick=()=>openGallery(card.querySelector('h4').textContent,images);
+});
+
+const references=['referans-1.jpg','referans-5.jpg','referans-3.jpg','referans-8.jpg','referans-12.jpg','referans-20.jpg','referans-17.jpg','referans-14.jpg','referans-10.jpg','referans-2.jpg','referans-9.jpg','referans-19.jpg','referans-18.jpg','referans-11.jpg','referans-16.jpg','referans-13.jpg','referans-21.jpg','referans-4.jpg','referans-15.jpg','referans-6.jpg','referans-5.jpg'];
+const referenceGrid=document.getElementById('referenceGrid');
+references.forEach((file,i)=>{
+const item=document.createElement('div');item.className='reference-item reveal';
+const image=document.createElement('img');image.src=base+file;image.alt=`Şen Paslanmaz referans projesi ${i+1}`;image.loading='lazy';
+item.appendChild(image);item.onclick=()=>openGallery('Referans Projesi',references.map(x=>base+x));referenceGrid.appendChild(item);io.observe(item);
+});
+
+function closeGallery(){modal.classList.remove('open');document.body.classList.remove('modal-open')}
+document.getElementById('galleryClose').onclick=closeGallery;
+modal.onclick=e=>{if(e.target===modal)closeGallery()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeGallery()});
+</script>
+</body>
+</html>
