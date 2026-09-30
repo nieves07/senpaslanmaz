@@ -327,7 +327,15 @@ section:not(.hero):not(.stats):after{
 .cta h2{font-size:clamp(26px,4vw,40px);margin-bottom:20px}
 .cta p{color:#a9b1b9;max-width:520px;margin:0 auto 34px;line-height:1.7}
 footer{background:#090a0c;color:#c3c7cc;padding:70px 0 26px;border-top:1px solid #ffffff14}
-.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
+.foot-grid{display:grid;grid-template-columns:1.25fr 1fr 1.15fr 1fr;gap:40px;margin-bottom:50px}
+.contact-map{width:100%;height:260px;margin-top:18px;border:1px solid #ffffff24;filter:none;opacity:1;border-radius:2px}
+.cta-map{display:block;width:min(100%,900px);height:300px;margin:32px auto 0}
+.working-hours{margin-top:18px;padding-top:16px;border-top:1px solid #ffffff14}
+.working-hours strong{display:block;color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.working-hours span{display:block;color:#8f98a2;font-size:12px;line-height:1.8}
+.whatsapp-float{position:fixed;right:24px;bottom:24px;z-index:120;display:flex;align-items:center;gap:9px;padding:13px 17px;background:#218c59;color:#fff;border-radius:3px;box-shadow:0 8px 24px #0008;font-size:12px;font-weight:600;letter-spacing:.04em;transition:.25s}
+.whatsapp-float:hover{background:#28a868;transform:translateY(-3px)}
+.whatsapp-icon{width:22px;height:22px;display:block;font-size:0;background:url('https://uploads.onecompiler.io/44ve7ewwc/1790796207386/WhatsApp.svg.webp') center/contain no-repeat;flex:0 0 22px}
 footer h5{color:#fff;font-size:13px;letter-spacing:.1em;margin-bottom:18px}
 footer ul{list-style:none}
 footer li{margin-bottom:10px;font-size:13px}
@@ -382,7 +390,9 @@ footer p.small{font-size:13px;line-height:1.7;color:#8f98a2;margin-top:18px}
   .grid{grid-template-columns:1fr}
   .reference-grid{grid-template-columns:repeat(2,1fr)}
   .reference-item{height:125px}
-  .foot-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+  .whatsapp-float{right:14px;bottom:14px;padding:12px 14px}
+  .whatsapp-float span:last-child{display:none}
   .gallery-modal{padding:10px}
   .gallery-box{padding:14px}
   .service-item{min-height:250px;padding:22px 17px}
@@ -491,8 +501,9 @@ footer p.small{font-size:13px;line-height:1.7;color:#8f98a2;margin-top:18px}
       <div class="about-copy reveal">
         <div class="eyebrow">Kurumsal</div>
         <h2>Yılların verdiği tecrübe, ustalıkla buluşuyor</h2>
-        <p>2007'den bu yana mega yat üreticileriyle çalışan ekibimiz, uluslararası projelerde kullanılan iç ve dış mekân paslanmaz donanım ve dekorasyon ürünlerini yüksek kalite standartlarıyla üretiyor.</p>
-        <p>Her projede estetik, dayanıklılık ve hassas ölçüleri bir araya getirerek müşterilerimizin ihtiyaçlarına özel çözümler geliştiriyoruz.</p>
+                <p>ŞEN PASLANMAZ'ın hikâyesi 2007 yılında Antalya'da, paslanmaz çeliğe ve iyi işçiliğe duyulan güçlü bir inançla başladı. Bugün aynı üretim anlayışını koruyarak, mega yatların iç ve dış mekânlarında kullanılan özel donanım ve dekorasyon parçalarını kendi atölyemizde üretiyoruz.</p>
+        <p>Bizim için her iş, çizimdeki ölçünün atölyedeki karşılığı kadar değerlidir. Projeyi dinliyor, gerektiğinde teknik detayları birlikte netleştiriyor ve ham malzemeden son polisaja kadar her aşamayı titizlikle takip ediyoruz. Bu yaklaşım sayesinde yıllardır yat üreticileri, tasarım ekipleri ve tersanelerle uzun soluklu iş birlikleri kuruyoruz.</p>
+        <p>Küçük bir bağlantı parçasından kapsamlı güverte uygulamalarına kadar hedefimiz aynı: işini bilen bir ekiple, zamanında teslim edilen ve yıllar boyunca güven veren paslanmaz ürünler ortaya koymak.</p>
         <div class="about-features">
           <div class="about-feature"><strong>18</strong><span>Yıllık deneyim</span></div>
           <div class="about-feature"><strong>569</strong><span>Tamamlanan proje</span></div>
@@ -508,12 +519,13 @@ footer p.small{font-size:13px;line-height:1.7;color:#8f98a2;margin-top:18px}
   <div class="wrap">
     <h2 class="reveal">Projeniz için doğru donanımı birlikte tasarlayalım</h2>
     <p class="reveal">Küçük bir imalattan büyük ölçekli yat projelerine, ihtiyacınıza özel paslanmaz çözümler sunuyoruz.</p>
-    <a class="btn btn-solid reveal" href="https://www.instagram.com/sen.paslanmaz/">Teklif Alın</a>
+        <a class="btn btn-solid reveal" href="https://www.instagram.com/sen.paslanmaz/">Teklif Alın</a>
+    <iframe class="contact-map cta-map" title="Şen Paslanmaz konum haritası" src="https://www.google.com/maps?q=36.8412914,30.6088754&z=17&output=embed" loading="lazy"></iframe>
   </div>
 </section>
 
 <footer id="iletisim">
-  <div class="wrap">
+    <div class="wrap">
     <div class="foot-grid">
       <div>
         <a class="logo" href="#"><img src="https://www.senpaslanmaz.com/wp-content/uploads/2023/04/logo-beyaz.png" alt="Şen Paslanmaz"></a>
@@ -526,6 +538,8 @@ footer p.small{font-size:13px;line-height:1.7;color:#8f98a2;margin-top:18px}
     <div class="foot-bottom"><span>© Şen Paslanmaz — Tüm Hakları Saklıdır.</span><span>Created by cesurdrnn/NieVes</span></div>
   </div>
 </footer>
+
+<a class="whatsapp-float" href="https://wa.me/902422215222?text=Merhaba%2C%20paslanmaz%20%C3%BCretim%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ile iletişime geçin"><span class="whatsapp-icon">↗</span><span>WhatsApp'tan Yazın</span></a>
 
 <div class="gallery-modal" id="galleryModal" role="dialog" aria-modal="true">
   <div class="gallery-box">
